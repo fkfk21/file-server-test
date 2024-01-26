@@ -12,4 +12,3 @@ services:
         source: ${MOUNT_PATH} 
         target: /usr/local/apache2/htdocs
       - ./httpd.conf:/usr/local/apache2/conf/httpd.conf
-      - ./style.css:/usr/local/apache2/conf/style.css
