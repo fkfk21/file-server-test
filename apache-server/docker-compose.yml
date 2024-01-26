@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  httpd:
+    image: httpd:latest
+    ports:
+      - "4100:80"
+    volumes:
+      - type: bind
+        source: ${HOME}/mysrc
+        target: /usr/local/apache2/htdocs
+      - ./httpd.conf:/usr/local/apache2/conf/httpd.conf
