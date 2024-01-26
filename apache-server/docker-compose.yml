@@ -5,8 +5,11 @@ services:
     image: httpd:latest
     ports:
       - "4100:80"
+    env_file:
+      - .env
     volumes:
       - type: bind
-        source: ${HOME}/mysrc
+        source: ${MOUNT_PATH} 
         target: /usr/local/apache2/htdocs
       - ./httpd.conf:/usr/local/apache2/conf/httpd.conf
+      - ./style.css:/usr/local/apache2/conf/style.css
