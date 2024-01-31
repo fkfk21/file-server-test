@@ -1,0 +1,16 @@
+[Unit]
+Description=Service for start file server
+After=docker.service
+Requires=docker.service
+
+[Service]
+Type=oneshot
+Environment=COMPOSE_FILE=/home/fukuda/docker_ws/file-server-test/apache-server/docker-compose.yml
+ExecStartPre=/usr/bin/docker compose -f ${COMPOSE_FILE} down --volumes
+ExecStart=/usr/bin/docker compose -f ${COMPOSE_FILE} up
+ExecStop=/usr/bin/docker compose -f ${COMPOSE_FILE} down --volumes
+User=fukuda
+Group=fukuda
+
+[Install]
+WantedBy=multi-user.target
